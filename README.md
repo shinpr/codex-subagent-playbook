@@ -16,12 +16,10 @@ The plugin contains one Agent Skill. Use it with individual subagents or an exis
 
 Requires the latest Codex CLI and access to GPT-6 Astra, GPT-5.6 Sol, and GPT-5.6 Luna.
 
-Clone the repository and register the marketplace:
+Register the marketplace directly from GitHub:
 
 ```bash
-git clone https://github.com/shinpr/codex-subagent-playbook.git
-cd codex-subagent-playbook
-codex plugin marketplace add .
+codex plugin marketplace add shinpr/codex-subagent-playbook
 ```
 
 In Codex, open `/plugins`. Find **Subagent Playbook** in **Codex Subagent Playbook**, install it, and start a new session. You can confirm the installation by opening the skill picker and checking that `subagent-playbook:subagent-delegation` is listed.
