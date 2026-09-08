@@ -1,0 +1,12 @@
+{
+  "name": "subagent-playbook",
+  "version": "0.1.0",
+  "description": "Opinionated Codex subagent model selection and delegation through completion.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Subagent Playbook",
+    "shortDescription": "Task-based model selection and completion delegation for Codex"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/shinpr/codex-subagent-playbook"
+}
