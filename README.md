@@ -6,7 +6,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-blue)](https://developers.openai.com/codex/skills/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A Codex plugin for choosing subagent models and managing delegated work through completion. It selects a model and reasoning effort based on the assigned task and supplied documents. It also defines how the main session waits for subagents, intervenes when needed, and checks their results before reporting completion.
+This plugin helps Codex choose suitable models for your tasks and follow delegated work through to a verified result. It favors longer waits to reduce the usage spent on check-ins, with closer attention when work gets stuck.
 
 The plugin contains one Agent Skill. Use it with individual subagents or an existing workflow.
 
@@ -70,13 +70,11 @@ These are case studies from one repository. They inform the defaults alongside d
 
 ## Delegation
 
-Small tasks can stay in the main session when delegation would add unnecessary coordination. Each child receives an outcome, scope, and the inputs needed to do the work. It owns the assignment through the required verification and chooses how to carry it out within those boundaries.
+Subagents get time to finish their work, including the checks needed to show it works. Small tasks can stay in the main session when splitting them up would add more overhead than value.
 
-The main session handles necessary work outside the child's assignment or waits for its notification. A wait timeout leaves the assignment pending. The parent continues waiting unless a decision request, a task change, or evidence of an assignment error calls for intervention.
+Frequent check-ins consume your usage budget. This plugin encourages Codex to wait longer, then find out how the work is going. If an agent is stuck on a test that never finishes, for example, Codex investigates and helps it move forward.
 
-The child initiates consultation when it needs a decision beyond its assignment. For example, if a fix requires changing a public API outside the agreed scope, the child brings that decision and its supporting evidence to the parent while continuing unaffected work.
-
-When a child finishes, the parent checks the deliverable and applies the required review. It receives every required child result before producing the final answer.
+You can change direction while work is running. Before reporting completion, Codex checks the results and carries out any required review.
 
 ---
 
