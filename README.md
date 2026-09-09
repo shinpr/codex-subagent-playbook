@@ -72,9 +72,9 @@ These are case studies from one repository. They inform the defaults alongside d
 
 Small tasks can stay in the main session when delegation would add unnecessary coordination. Each child receives an outcome, scope, and the inputs needed to do the work. It owns the assignment through the required verification and chooses how to carry it out within those boundaries.
 
-The main session handles necessary work outside the child's assignment or waits for its notification. A wait timeout leaves the assignment pending. The parent continues waiting unless a decision request, a task change, or evidence of an assignment error calls for intervention.
+The skill guides the parent, which passes the relevant scope, verification, and consultation expectations to the child in its assignment.
 
-The child initiates consultation when it needs a decision beyond its assignment. For example, if a fix requires changing a public API outside the agreed scope, the child brings that decision and its supporting evidence to the parent while continuing unaffected work.
+The main session handles necessary work outside the child's assignment or uses long, interruptible waits to preserve usage budget. After a long wait, it assesses actual progress and asks the child for enough detail when the available evidence is insufficient. If work is stalled, the parent investigates and provides an actionable correction or diagnostic approach before returning execution to the child. Healthy work continues with long waits.
 
 When a child finishes, the parent checks the deliverable and applies the required review. It receives every required child result before producing the final answer.
 

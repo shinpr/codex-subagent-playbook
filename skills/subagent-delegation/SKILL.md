@@ -1,21 +1,19 @@
 ---
 name: subagent-delegation
-description: "Guides subagent delegation with task-based model selection and child-owned completion. Use when considering subagents, assigning work, receiving delegated work, or waiting for or steering a child."
+description: "Guides parents in subagent model selection and delegation through completion. Use when assigning work to subagents, assessing their progress or results, or intervening in delegated work."
 ---
 
 # Subagent Delegation
 
-Use this policy for subagents, including custom roles and agents created for the current task. Apply the parent responsibilities when delegating work and the child responsibilities when receiving it.
+Use this policy as the parent delegating to subagents, including custom roles and agents created for the current task.
 
 Accept semantically equivalent wording in natural-language inputs while preserving exact contracts where software parses them.
 
-## Parent Responsibilities
-
-### Delegation Scope
+## Delegation Scope
 
 Delegate a bounded outcome when separate execution or an independent perspective earns the coordination cost. Keep work local when that is the smaller sufficient route. Apply the model table to the work actually being assigned; its rows describe task types rather than mandatory workflow stages.
 
-### Model Selection
+## Model Selection
 
 Honor explicit user model choices and governing role or host constraints first. Otherwise use this policy:
 
@@ -39,9 +37,9 @@ For an assignment spanning several categories, select by its requested deliverab
 
 Use the host's supported launch method for the selected model and effort, and explicitly supply the governing inputs needed by the child. When the selected combination is unavailable, surface that limitation and obtain an allowed alternative before launching; treat an explicit fallback supplied by the user as authorization.
 
-### Assignment
+## Assignment
 
-Give the child its expected outcome, scope, governing inputs, and the result needed by the next consumer. Follow a custom agent's input contract and pass artifact paths instead of repeating their contents. Make the relevant artifacts accessible to the child. Leave in-scope methods and reversible choices to the child.
+Give the child its expected outcome, scope, governing inputs, and the result needed by the next consumer, including verification evidence and remaining blockers. Follow a custom agent's input contract and pass artifact paths instead of repeating their contents. Make the relevant artifacts accessible to the child. Leave in-scope methods and reversible choices to the child. In the assignment, require only work serving the outcome, a required boundary, or necessary proof; allow reuse and evidence-backed no-change. Specify the smallest sufficient verification that observes the required behavior and meets repository checks. Ask the child to bring decisions beyond its scope with the evidence needed to resolve them.
 
 Choose the delegation level based on which decisions the child owns:
 
@@ -52,20 +50,14 @@ Choose the delegation level based on which decisions the child owns:
 
 Research and design also use completion delegation when the child owns the required decisions. Only a retained parent decision needs additional consultation instructions.
 
-### Waiting, Intervention, and Completion
+## Waiting, Intervention, and Completion
 
-Minimize total parent-and-child token cost while meeting required quality and user time constraints. While the child works, perform only necessary work outside its delegated responsibility, or wait for its notification. Notification-driven subagent waits resume on child notifications or user input, preserving the user's ability to intervene; the 60-second blocking-wait guidance does not apply to these interruptible waits. The user prioritizes preserving their usage budget over routine progress updates. Use waits longer than 60 seconds, increasing the duration with the child's delegated autonomy and expected task duration. Shorten it only for a concrete earlier parent action whose expected benefit outweighs the extra coordination cost. A timeout or routine progress notification leaves the assignment pending; continue waiting.
+Use notification-driven subagent waits longer than 60 seconds, increasing the duration with the child's delegated autonomy and expected task duration. These waits resume on child notifications or user input; the 60-second blocking-wait guidance does not apply to them. Prioritize the user's usage budget over routine progress updates. While the child works, perform only necessary work outside its delegated responsibility, or wait. Shorten a wait only for a concrete earlier parent action whose expected benefit outweighs the extra coordination cost. Minimize total parent-and-child token cost while meeting required quality and user time constraints.
 
-The child initiates consultation. Intervene for a child decision request, a user change or cancellation, or a material assignment error learned through other necessary work. Base intervention on these notifications and independently acquired evidence.
+On a timeout or notification, assess available evidence of progress against the expected task duration. After a long wait, obtain enough information to judge whether continued waiting is useful: ask the child for its current operation, latest results, and next step when available evidence is insufficient. A running status alone does not establish progress. Continue long waits when the evidence supports the child's approach.
+
+Intervene for a decision request, a user change or cancellation, or evidence that the child's approach is ineffective or progress has stalled. Investigate enough to provide an actionable correction or diagnostic approach before resuming the wait. Return in-scope execution to the child once the next step addresses the problem.
 
 Preserve the running assignment until completion or a correction or redirection makes it obsolete. If the host confirms that the child has failed or otherwise cannot continue, report the unfinished assignment as a blocker with that evidence.
 
 Inspect the completed deliverable and apply the required verification and review. Receive every required child result before producing the final deliverable.
-
-## Child Responsibilities
-
-Own the assigned outcome through its required verification. Resolve local uncertainty from the supplied inputs and repository evidence. Initiate consultation when progress requires a decision or authority beyond the assignment, stating the blocker, relevant evidence, and needed decision. Continue unaffected in-scope work where possible.
-
-Treat findings and technically valid improvements as candidates. Implement only what serves the assigned outcome, a required boundary, or necessary proof. Reuse and evidence-backed no-change are valid outcomes when the requirement is already satisfied. Assess review findings against those same criteria; justify declined additions, and return changes to the intended outcome or major approved decisions to the parent.
-
-Return the outcome, relevant artifact paths, verification evidence, and any remaining blocker or decision in the form needed by the consumer. Use the smallest sufficient verification that observes the required behavior and meets repository checks. Stop when the assigned outcome and its required proof are complete.
