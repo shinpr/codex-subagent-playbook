@@ -14,7 +14,7 @@ The plugin contains one Agent Skill. Use it with individual subagents or an exis
 
 ## Quick Start
 
-Requires the latest Codex CLI and access to GPT-6 Astra, GPT-5.6 Sol, and GPT-5.6 Luna.
+Requires the latest Codex CLI and access to GPT-6 Astra, GPT-6 Sol, and GPT-6 Luna.
 
 Register the marketplace directly from GitHub:
 
@@ -41,20 +41,20 @@ The defaults reflect the author's measurements and daily use. Astra handles rese
 | Task | Model | Effort |
 |---|---|---|
 | Analysis, research, and direction setting | Astra | medium |
-| Design | Sol | high |
+| Design | Sol | xhigh |
 | Implementation | Luna | max |
 | Review | Astra | medium |
-| Urgent work, including incident investigation and response | Astra | medium |
+| Urgent work, including incident investigation and response | Sol | xhigh |
 
 These are the model and effort choices Codex applies when starting a child. Explicit user choices and existing host or role constraints take precedence.
 
 The implementation and urgency rules are:
 
-- Implementation uses Astra medium when neither a design document nor a work plan is designated as an input.
-- Creating or changing a web UI's appearance also requires a UI specification or mockup to use Luna. Otherwise, it uses Astra medium.
-- Urgent work uses Astra medium, taking precedence over the ordinary task categories.
+- Implementation uses Sol xhigh when neither a design document nor a work plan is designated as an input.
+- Creating or changing a web UI's appearance also requires a UI specification or mockup to use Luna. Otherwise, it uses Sol xhigh.
+- Urgent work uses Sol xhigh, taking precedence over the ordinary task categories.
 
-The implementation rules check which inputs are supplied, not whether their contents pass a design review. Point Codex to the documents you already have; work can proceed with Astra medium when those inputs are absent. The web UI rule reflects the author's experience with UI generation.
+The implementation rules check which inputs are supplied, not whether their contents pass a design review. Point Codex to the documents you already have; work can proceed with Sol xhigh when those inputs are absent. The web UI rule reflects the author's experience with UI generation.
 
 <details>
 <summary>Background on the defaults</summary>
