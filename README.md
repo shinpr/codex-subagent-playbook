@@ -14,7 +14,7 @@ The plugin contains one Agent Skill. Use it with individual subagents or an exis
 
 ## Quick Start
 
-Requires the latest Codex CLI and access to GPT-6 Astra, GPT-6 Sol, and GPT-6 Luna.
+Requires the latest Codex CLI and access to GPT-6 Astra, GPT-6.1 Sol, and GPT-6 Luna.
 
 Register the marketplace directly from GitHub:
 
