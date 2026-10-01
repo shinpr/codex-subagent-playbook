@@ -41,20 +41,20 @@ The defaults reflect the author's measurements and daily use. Astra handles rese
 | Task | Model | Effort |
 |---|---|---|
 | Analysis, research, and direction setting | Astra | medium |
-| Design | Sol | xhigh |
+| Design | Sol | high |
 | Implementation | Luna | max |
 | Review | Astra | medium |
-| Urgent work, including incident investigation and response | Sol | xhigh |
+| Urgent work, including incident investigation and response | Sol | high |
 
 These are the model and effort choices Codex applies when starting a child. Explicit user choices and existing host or role constraints take precedence.
 
 The implementation and urgency rules are:
 
-- Implementation uses Sol xhigh when neither a design document nor a work plan is designated as an input.
-- Creating or changing a web UI's appearance also requires a UI specification or mockup to use Luna. Otherwise, it uses Sol xhigh.
-- Urgent work uses Sol xhigh, taking precedence over the ordinary task categories.
+- Implementation uses Sol high when neither a design document nor a work plan is designated as an input.
+- Creating or changing a web UI's appearance also requires a UI specification or mockup to use Luna. Otherwise, it uses Sol high.
+- Urgent work uses Sol high, taking precedence over the ordinary task categories.
 
-The implementation rules check which inputs are supplied, not whether their contents pass a design review. Point Codex to the documents you already have; work can proceed with Sol xhigh when those inputs are absent. The web UI rule reflects the author's experience with UI generation.
+The implementation rules check which inputs are supplied, not whether their contents pass a design review. Point Codex to the documents you already have; work can proceed with Sol high when those inputs are absent. The web UI rule reflects the author's experience with UI generation.
 
 <details>
 <summary>Background on the defaults</summary>

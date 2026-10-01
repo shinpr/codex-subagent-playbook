@@ -20,18 +20,18 @@ Honor explicit user model choices and governing role or host constraints first. 
 | Assigned task | Model | Reasoning effort |
 |---|---|---|
 | Analysis, research, or direction setting | `gpt-6-astra` | `medium` |
-| Design | `gpt-6.1-sol` | `xhigh` |
+| Design | `gpt-6.1-sol` | `high` |
 | Implementation | `gpt-6-luna` | `max` |
 | Review | `gpt-6-astra` | `medium` |
-| Urgent work, including incident investigation and response | `gpt-6.1-sol` | `xhigh` |
+| Urgent work, including incident investigation and response | `gpt-6.1-sol` | `high` |
 
 Use the urgent-work row when the user explicitly requests urgent handling or the assignment is incident investigation or response. This takes precedence over the ordinary task categories; otherwise select by the assigned task. For implementation, apply these exceptions in order:
 
-1. If neither a design document nor a work plan is designated as an input for this assignment, use `gpt-6.1-sol` / `xhigh`.
-2. If the assignment creates or changes the appearance of a web UI and neither a UI specification nor a design mockup is designated as an input, use `gpt-6.1-sol` / `xhigh`.
+1. If neither a design document nor a work plan is designated as an input for this assignment, use `gpt-6.1-sol` / `high`.
+2. If the assignment creates or changes the appearance of a web UI and neither a UI specification nor a design mockup is designated as an input, use `gpt-6.1-sol` / `high`.
 3. Otherwise use `gpt-6-luna` / `max`.
 
-Use the assignment's designated inputs for this selection. Accept equivalent document names and formats. Document quality assessment belongs to the assigned work or its required review; model selection only checks input presence. When inputs are absent, select `gpt-6.1-sol` / `xhigh` and proceed with the authorized work. Produce documents only when the task itself requires them.
+Use the assignment's designated inputs for this selection. Accept equivalent document names and formats. Document quality assessment belongs to the assigned work or its required review; model selection only checks input presence. When inputs are absent, select `gpt-6.1-sol` / `high` and proceed with the authorized work. Produce documents only when the task itself requires them.
 
 For an assignment spanning several categories, select by its requested deliverable. Implementation that also requires research or design follows the implementation exceptions; a request to produce a design follows the design row.
 
