@@ -6,9 +6,9 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-blue)](https://developers.openai.com/codex/skills/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Get more completed work out of your Codex subscription. This plugin puts Luna to work on implementation, uses Sol for design and Astra for research and review, and cuts unnecessary check-ins with the parent session.
+Get more completed work out of your Codex subscription. This plugin puts Luna to work on implementation from your design document or work plan, uses Sol for design and Astra for research and review, and cuts unnecessary check-ins with the parent session.
 
-In one recorded task, Luna max built a persistent cache used by two parts of an application, covering reuse, invalidation, failure recovery, and deletion. It passed 99 tests and returned the implementation in about 27 minutes for roughly $0.38 at API rates.
+In one recorded task, Luna max built a persistent cache used by two parts of an application, covering reuse, invalidation, failure recovery, and deletion. It passed 99 tests and returned the implementation in about 27 minutes for roughly $0.38 [at API rates](#api-cost-estimates).
 
 The plugin contains one Agent Skill. Use it with individual subagents or an existing workflow.
 
@@ -38,7 +38,7 @@ To request the skill explicitly, select `subagent-playbook:subagent-delegation` 
 
 ## Model Selection
 
-Give Codex your design document or work plan so Luna can handle implementation at a lower cost. Sol handles design, and Astra handles research and review.
+Give Codex your design document or work plan so Luna can handle implementation at a lower cost.
 
 | Task | Model | Effort |
 |---|---|---|
@@ -49,7 +49,7 @@ Give Codex your design document or work plan so Luna can handle implementation a
 | Review | Astra | medium |
 | Urgent work, including incident investigation and response | Sol | high |
 
-For web UI appearance changes, also supply a UI specification or mockup to use Luna; otherwise, Codex uses Sol high. Urgent work uses Sol high across all task categories. Your explicit model choices and existing host or role constraints take precedence over these defaults.
+For web UI appearance changes, also supply a UI specification or mockup to use Luna; otherwise, Codex uses Sol high. Urgent work uses Sol high regardless of task type. Your explicit model choices and existing host or role constraints take precedence over these defaults.
 
 <details>
 <summary>Background on the defaults</summary>
@@ -63,7 +63,9 @@ For web UI appearance changes, also supply a UI specification or mockup to use L
 
 ## Fewer Check-ins
 
-A subagent's progress message to the parent wakes it to process its context and respond. In the task above, one routine update made the Sol parent process another 67k input tokens, mostly cached, costing about $0.009 including its response. Repeated check-ins add to the cost while implementation continues.
+A subagent's progress message to the parent wakes it to process its context and respond. In the task above, one routine update made the Sol parent process another 67k input tokens, mostly cached, costing about $0.009 including its response.
+
+<a id="api-cost-estimates"></a>
 
 These estimates use the October 10, 2026 Standard API rates for [Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) and [Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol), including cached input and reasoning output.
 
