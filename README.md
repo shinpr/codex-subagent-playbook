@@ -1,12 +1,14 @@
 # codex-subagent-playbook
 
-![Codex Subagent Playbook — Delegate. Finish. Follow through.](assets/banner.jpg)
+![Codex Subagent Playbook: Delegate. Finish. Follow through.](assets/banner.jpg)
 
 [![Codex CLI](https://img.shields.io/badge/Codex%20CLI-Compatible-10a37f)](https://developers.openai.com/codex/cli)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-blue)](https://developers.openai.com/codex/skills/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This plugin helps Codex choose suitable models for your tasks and follow delegated work through to a verified result. It favors longer waits to reduce the usage spent on check-ins, with closer attention when work gets stuck.
+Get more completed work out of your Codex subscription. This plugin puts Luna to work on implementation from your design document or work plan, uses Sol for design and Astra for research and review, and cuts unnecessary check-ins with the parent session.
+
+In one recorded task, Luna max built a persistent cache used by two parts of an application, covering reuse, invalidation, failure recovery, and deletion. It passed 99 tests and returned the implementation in about 27 minutes for roughly $0.38 [at API rates](#api-cost-estimates).
 
 The plugin contains one Agent Skill. Use it with individual subagents or an existing workflow.
 
@@ -36,25 +38,18 @@ To request the skill explicitly, select `subagent-playbook:subagent-delegation` 
 
 ## Model Selection
 
-The defaults reflect the author's measurements and daily use. Astra handles research and review because judging what is worth changing matters there, and those tasks consume more input than output. Sol handles design after the direction has been set. Luna handles implementation from supplied documents to keep execution costs down, with Astra providing the review that can catch mistakes and redirect the work.
+Give Codex your design document or work plan so Luna can handle implementation at a lower cost.
 
 | Task | Model | Effort |
 |---|---|---|
 | Analysis, research, and direction setting | Astra | medium |
 | Design | Sol | high |
-| Implementation | Luna | max |
+| Implementation with a design document or work plan | Luna | max |
+| Implementation without either document | Sol | high |
 | Review | Astra | medium |
 | Urgent work, including incident investigation and response | Sol | high |
 
-These are the model and effort choices Codex applies when starting a child. Explicit user choices and existing host or role constraints take precedence.
-
-The implementation and urgency rules are:
-
-- Implementation uses Sol high when neither a design document nor a work plan is designated as an input.
-- Creating or changing a web UI's appearance also requires a UI specification or mockup to use Luna. Otherwise, it uses Sol high.
-- Urgent work uses Sol high, taking precedence over the ordinary task categories.
-
-The implementation rules check which inputs are supplied, not whether their contents pass a design review. Point Codex to the documents you already have; work can proceed with Sol high when those inputs are absent. The web UI rule reflects the author's experience with UI generation.
+For web UI appearance changes, also supply a UI specification or mockup to use Luna; otherwise, Codex uses Sol high. Urgent work uses Sol high regardless of task type. Your explicit model choices and existing host or role constraints take precedence over these defaults.
 
 <details>
 <summary>Background on the defaults</summary>
@@ -62,19 +57,21 @@ The implementation rules check which inputs are supplied, not whether their cont
 - [Reasoning Effort Is Not a Quality Setting](https://www.norsica.jp/blog/reasoning-effort-is-not-a-quality-setting) compares design, implementation, and review across several configurations, including Sol high and Luna max.
 - [Astra and Sol in Galley: Evaluation Methods and Results](https://www.norsica.jp/resources/astra-effort-evaluation) compares Astra effort levels with Sol high in analysis, implementation, and code review.
 
-These are case studies from one repository. They inform the defaults alongside daily use; the web UI rule remains an experience-based choice rather than a result of these evaluations.
-
 </details>
 
 ---
 
-## Delegation
+## Fewer Check-ins
 
-Subagents get time to finish their work, including the checks needed to show it works. Small tasks can stay in the main session when splitting them up would add more overhead than value.
+A subagent's progress message to the parent wakes it to process its context and respond. In the task above, one routine update made the Sol parent process another 67k input tokens, mostly cached, costing about $0.009 including its response.
 
-Frequent check-ins consume your usage budget. This plugin encourages Codex to wait longer, then find out how the work is going. If an agent is stuck on a test that never finishes, for example, Codex investigates and helps it move forward.
+<a id="api-cost-estimates"></a>
 
-You can change direction while work is running. Before reporting completion, Codex checks the results and carries out any required review.
+These estimates use the October 10, 2026 Standard API rates for [Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) and [Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol), including cached input and reasoning output.
+
+With this plugin, subagents work through implementation and verification, contacting the parent when they need a decision or help, or when you request an update. The parent waits for those notifications or the completed result. You can change direction while work is running.
+
+Small tasks can stay in the main session when delegation would add more overhead than value. Before reporting completion, Codex checks the results and carries out any required review.
 
 ---
 
