@@ -1,12 +1,12 @@
 # codex-subagent-playbook
 
-![Codex Subagent Playbook — Delegate. Finish. Follow through.](assets/banner.jpg)
+![Codex Subagent Playbook: Delegate. Finish. Follow through.](assets/banner.jpg)
 
 [![Codex CLI](https://img.shields.io/badge/Codex%20CLI-Compatible-10a37f)](https://developers.openai.com/codex/cli)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-blue)](https://developers.openai.com/codex/skills/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This plugin helps Codex choose suitable models for your tasks and follow delegated work through to a verified result. It favors longer waits to reduce the usage spent on check-ins, with closer attention when work gets stuck.
+Get more completed work out of your Codex subscription. This plugin helps Codex balance subagent quality and token cost: it matches models and reasoning effort to each task, and cuts the check-ins that spend your budget while another agent is working.
 
 The plugin contains one Agent Skill. Use it with individual subagents or an existing workflow.
 
@@ -36,7 +36,7 @@ To request the skill explicitly, select `subagent-playbook:subagent-delegation` 
 
 ## Model Selection
 
-The defaults reflect the author's measurements and daily use. Astra handles research and review because judging what is worth changing matters there, and those tasks consume more input than output. Sol handles design after the direction has been set. Luna handles implementation from supplied documents to keep execution costs down, with Astra providing the review that can catch mistakes and redirect the work.
+The defaults use Luna for implementation from supplied documents to keep execution costs down. Astra handles research and review, where judging what is worth changing matters and tasks consume more input than output. Sol handles design after the direction has been set. These choices reflect the author's measurements and daily use.
 
 | Task | Model | Effort |
 |---|---|---|
@@ -70,9 +70,11 @@ These are case studies from one repository. They inform the defaults alongside d
 
 ## Delegation
 
-Subagents get time to finish their work, including the checks needed to show it works. Small tasks can stay in the main session when splitting them up would add more overhead than value.
+In one recorded development task, Luna max added a persistent cache across two application entry points, covering reuse, invalidation, failure recovery, and deletion. It passed 99 tests and returned the implementation in about 27 minutes, for roughly $0.38 in API-equivalent token cost. A routine progress notification made the Sol parent process another 67k input tokens, mostly cached, costing about $0.009 including its response.
 
-Frequent check-ins consume your usage budget. This plugin encourages Codex to wait longer, then find out how the work is going. If an agent is stuck on a test that never finishes, for example, Codex investigates and helps it move forward.
+These estimates use the October 10, 2026 Standard API rates for [Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) and [Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol), including cached input and reasoning output.
+
+This plugin gives subagents time to finish implementation and verification, with interim messages when a decision or help is needed, or when you ask for an update. The parent waits for those notifications. Small tasks can stay in the main session when delegation would add more overhead than value.
 
 You can change direction while work is running. Before reporting completion, Codex checks the results and carries out any required review.
 

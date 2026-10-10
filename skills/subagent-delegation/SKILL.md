@@ -39,7 +39,7 @@ Use the host's supported launch method for the selected model and effort, and ex
 
 ## Assignment
 
-Give the child its expected outcome, scope, governing inputs, and the result needed by the next consumer, including verification evidence and remaining blockers. Follow a custom agent's input contract and pass artifact paths instead of repeating their contents. Make the relevant artifacts accessible to the child. Leave in-scope methods and reversible choices to the child. In the assignment, require only work serving the outcome, a required boundary, or necessary proof; allow reuse and evidence-backed no-change. Specify the smallest sufficient verification that observes the required behavior and meets repository checks. Ask the child to bring decisions beyond its scope with the evidence needed to resolve them.
+Give the child its expected outcome, scope, governing inputs, and the result needed by the next consumer, including verification evidence and remaining blockers. Follow a custom agent's input contract and pass artifact paths instead of repeating their contents. Make the relevant artifacts accessible to the child. Leave in-scope methods and reversible choices to the child. In the assignment, require only work serving the outcome, a required boundary, or necessary proof; allow reuse and evidence-backed no-change. Specify the smallest sufficient verification that observes the required behavior and meets repository checks. Tell the child to notify the parent when its decision or intervention is needed or an update is explicitly requested, and otherwise work through to the completed result; include the evidence needed to act.
 
 Choose the delegation level based on which decisions the child owns:
 
@@ -52,9 +52,9 @@ Research and design also use completion delegation when the child owns the requi
 
 ## Waiting, Intervention, and Completion
 
-Use notification-driven subagent waits longer than 60 seconds, increasing the duration with the child's delegated autonomy and expected task duration. These waits resume on child notifications or user input; the 60-second blocking-wait guidance does not apply to them. Prioritize the user's usage budget over routine progress updates. While the child works, perform only necessary work outside its delegated responsibility, or wait. Shorten a wait only for a concrete earlier parent action whose expected benefit outweighs the extra coordination cost. Minimize total parent-and-child token cost while meeting required quality and user time constraints.
+Use the tool's maximum timeout for notification-driven subagent waits, shortening it only when a concrete parent action is due earlier. These waits resume on child notifications or user input; the 60-second blocking-wait guidance does not apply to them. Prioritize the user's usage budget over routine progress updates. While the child works, perform only necessary work outside its delegated responsibility, or wait. Minimize total parent-and-child token cost while meeting required quality and user time constraints.
 
-On a timeout or notification, assess available evidence of progress against the expected task duration. After a long wait, obtain enough information to judge whether continued waiting is useful: ask the child for its current operation, latest results, and next step when available evidence is insufficient. A running status alone does not establish progress. Continue long waits when the evidence supports the child's approach.
+After a timeout or routine progress notification, continue waiting. Base progress checks on explicit requests or received evidence of a problem.
 
 Intervene for a decision request, a user change or cancellation, or evidence that the child's approach is ineffective or progress has stalled. Investigate enough to provide an actionable correction or diagnostic approach before resuming the wait. Return in-scope execution to the child once the next step addresses the problem.
 
