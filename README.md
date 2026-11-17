@@ -8,15 +8,13 @@
 
 Get more completed work out of your Codex subscription. This plugin puts Luna to work on implementation from your design document or work plan, uses Sol for design and Astra for research and review, and cuts unnecessary check-ins with the parent session.
 
-In one recorded task, Luna max built a persistent cache used by two parts of an application, covering reuse, invalidation, failure recovery, and deletion. It passed 99 tests and returned the implementation in about 27 minutes for roughly $0.38 [at API rates](#api-cost-estimates).
-
 The plugin contains one Agent Skill. Use it with individual subagents or an existing workflow.
 
 ---
 
 ## Quick Start
 
-Requires the latest Codex CLI and access to GPT-6 Astra, GPT-6.1 Sol, and GPT-6 Luna.
+Requires the latest Codex CLI and access to GPT-6.2 Astra, GPT-6.2 Sol, and GPT-6 Luna.
 
 Register the marketplace directly from GitHub:
 
@@ -38,7 +36,7 @@ To request the skill explicitly, select `subagent-playbook:subagent-delegation` 
 
 ## Model Selection
 
-Give Codex your design document or work plan so Luna can handle implementation at a lower cost.
+Give Codex your design document or work plan so Luna can handle implementation.
 
 | Task | Model | Effort |
 |---|---|---|
@@ -63,11 +61,7 @@ For web UI appearance changes, also supply a UI specification or mockup to use L
 
 ## Fewer Check-ins
 
-A subagent's progress message to the parent wakes it to process its context and respond. In the task above, one routine update made the Sol parent process another 67k input tokens, mostly cached, costing about $0.009 including its response.
-
-<a id="api-cost-estimates"></a>
-
-These estimates use the October 10, 2026 Standard API rates for [Luna](https://developers.openai.com/api/docs/models/gpt-6-luna) and [Sol](https://developers.openai.com/api/docs/models/gpt-6.1-sol), including cached input and reasoning output.
+Each subagent progress message wakes the parent session to process the update and respond.
 
 With this plugin, subagents work through implementation and verification, contacting the parent when they need a decision or help, or when you request an update. The parent waits for those notifications or the completed result. You can change direction while work is running.
 
